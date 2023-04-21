@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Moldy Apples</title>
+</head>
+<h1>Moldy Apples</h1>
+<body>
+    <form>
+        <input type="text" placeholder="The Godfather" name="movie" id="movie">
+        <div class="col-sm-4">
+            Rating
+            <input class="form-control" type="number" min="0" max="100" value="100">
+        </div>
+        <button type="submit" id="submit-button">Sumbit</button>
+    </form>
+    <div> 
+    <container id="ratings-table">
+        <table>
+        <tr>
+            <td></td>
+        </tr>
+    </table>
+    </container>
+    </div> 
+
+    <script src="https://code.jquery.com/jquery-3.6.4.js" integrity="sha256-a9jBBRygX1Bh5lt8GZjXDzyOB+bWve9EiO7tROUtj/E=" crossorigin="anonymous"></script>
+    
+    <script>
+        // $('ratings-table').add('<td/>', )
+        $('form').submit(function (e) {
+            e.preventDefault();
+            let movie = $('#movie').val();
+            let rating = $('.form-control').val();
+            let row = $("<tr>");
+        row.append($('<td>').text(movie));
+        row.append($('<td>').text(rating));
+        row.append($('<td>').append($('<button class="remove-button">').text('Remove')));
+            $('#ratings-table table').append(row);
+            
+            $('.remove-button' ).on('click', function () {
+                $(this).closest('tr').remove();
+         });
+  });
+
+
+
+
+    </script>
+    
+</body>
+</html>
